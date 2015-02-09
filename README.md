@@ -1,4 +1,4 @@
-# assemblerjs
+# AssemblerJS
 
 Projeto da faculdade de um Assembler simples em JavaScript. Através dos comandos adicionados, é gerada a tabela de *opcodes* e a tabela-verdade.
 

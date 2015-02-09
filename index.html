@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assembler JS</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+	<style>
+		#wrapper { margin: 0px auto 10px; width: 900px; }
+		#ajuda { display: none; border-bottom: 1px solid #aaa; padding: 5px 0px; font-size: 12px; }
+		#tabela-binario, #tabela-verdade { display: none; }
+		small { font-size: 75%; }
+	</style>
+	<script src="assembler.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<a href="javascript:void(0);" onclick="ajuda();">Ajuda</a>
+			<div id ="ajuda">
+				1. Escolher função na caixa de seleção<br />
+				2. Digitar os comandos no campo texto<br />
+				Ex.: sub | $0, $1, $2 /// addi | $3, $4, 25 /// j | 1234<br />
+				Para adicionar mais comandos, clicar no botão "+"<br />
+				3. Clicar em "Compilar"<br />
+			</div>
+			<div class="page-header">
+				<h1>Assembler JS</h1>
+			</div>
+		</header>
+		<section>
+			<div id="instrucoes">
+				<p>
+					<button type="button" onclick="add();" title="Adicionar Instrução" class="btn btn-default">+</button>
+				</p>
+				<div>
+					<select class="input-small">
+						<option value="add" data-op="0" data-funct="0">add</option>
+						<option value="addi" data-op="4">addi</option>
+						<option value="sub" data-op="0" data-funct="1">sub</option>
+						<option value="subi" data-op="8" data-funct="1">subi</option>
+						<option value="and" data-op="0" data-funct="2">and</option>
+						<option value="andi" data-op="12">andi</option>
+						<option value="or" data-op="0" data-funct="1">or</option>
+						<option value="ori" data-op="16">ori</option>
+						<option value="not" data-op="0" data-funct="3">not</option>
+						<option value="beq" data-op="20" data-funct="4">beq</option>
+						<option value="slt" data-op="0" data-funct="4">slt</option>
+						<option value="slti" data-op="24" data-funct="4">slti</option>
+						<option value="lw" data-op="28">lw</option>
+						<option value="sw" data-op="32">sw</option>
+						<option value="j" data-op="36">j</option>
+					</select>
+					<input type="text" class="input-large" />
+				</div>
+			</div>
+			<p>
+				<button type="button" onclick="compilar();" class="btn btn-primary">Compilar</button>
+			</p>
+			<table id="tabela-binario" class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Op</th>
+						<th colspan="5">Operandos</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<table id="tabela-verdade" class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Instrução</th>
+						<th>RegDst</th>
+						<th>RegWrite</th>
+						<th>MemToReg</th>
+						<th>MemRead</th>
+						<th>MemWrite</th>
+						<th>Branch</th>
+						<th>PCSrc</th>
+						<th>ALUSrc</th>
+						<th>ALUOp</th>
+						<th>Jump</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</section>
+	</div>
+</body>
+</html>
